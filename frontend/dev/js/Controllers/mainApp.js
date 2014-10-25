@@ -61,6 +61,18 @@
 		return userLink;
 	};
 
+	git.prototype.mostIssues = function(repoArray) {
+		var issueCount = -1;
+		var topIssueProject = null;
+		for(var i=0; i<repoArray.length; i++) {
+			if(repoArray[i].open_issues_count>issueCount) {
+				topIssueProject = repoArray[i];
+				issueCount = repoArray[i].open_issues_count;
+			}
+		}
+		return topIssueProject;
+	}
+
 	window.git = new git();
 })();
 
@@ -83,9 +95,9 @@ myApp.controller('mainApp', ['$scope', '$firebase', '$http',
 			  	$scope.users[index].topLanguage = git.mostPopularLanguage(data);
 			  	$scope.users[index].mostWatchedProject = git.mostWatchedProject(data);
 			  	$scope.users[index].avatar = git.getUserAvatar(data, username);
+			  	$scope.users[index].mostIssues = git.mostIssues(data);
 			  	$scope.users[index].repoObj = data;
 			  	$scope.users.$save(index);
-			  	console.log('update called on index ' + index);
 			  });
 		}
 

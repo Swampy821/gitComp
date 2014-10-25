@@ -58,14 +58,39 @@
 
     <div ng-controller='mainApp' ng-show='state.app'>
         <div class='row'>
-            <div class='col-lg-6 col-xs-6 col-sm-6' ng-repeat='user in users'>
+            <div class='col-lg-6 col-xs-12 col-sm-6' ng-repeat='user in users'>
                 <div class='well infobox'>
                     <h3><img ng-src='{{user.avatar}}' class='circle avatar'> {{user.username}}</h3>
                     <hr>
-                    Number of Repos: {{user.repoCount}}<br>
-                    Favorite Language: {{user.topLanguage}}<br>
-                    Most Watched Project: {{user.mostWatchedProject.project}}<br />
-                    Watchers: {{user.mostWatchedProject.count}}<br />
+                    <table class="table table-striped table-hover ">
+                        <tbody>
+                            <tr>
+                                <td>Number of Repos</td>
+                                <td>{{user.repoCount}}</td>
+                            </tr>
+                            <tr>
+                                <td>Favorite Language</td>
+                                <td>{{user.topLanguage}}</td>
+                            </tr>
+                            <tr class='success'>
+                                <td>Most Watched Project</td>
+                                <td>{{user.mostWatchedProject.project}}</td>
+                            </tr>
+                            <tr class='success'>
+                                <td>Watchers</td>
+                                <td>{{user.mostWatchedProject.count}}</td>
+                            </tr>
+                            <tr  class='active' ng-hide='user.mostIssues.open_issues_count == 0'>
+                                <td>project with most issues</td>
+                                <td>{{user.mostIssues.name}}</td>
+                            </tr>
+                            <tr class='active' ng-hide='user.mostIssues.open_issues_count == 0'>
+                                <td># of Issues</td>
+                                <td>{{user.mostIssues.open_issues_count}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
                     <a class='btn btn-info btn-xs btn-raised' href='http://github.com/{{user.username}}'>View Github</a>
                 </div>
             </div>
