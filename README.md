@@ -1,4 +1,4 @@
-gitCompete
+gitComp
 ==========
 
-Compete with your friends on github commits. 
+Compare github users in one place. 
