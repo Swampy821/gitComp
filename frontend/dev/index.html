@@ -58,9 +58,15 @@
 
     <div ng-controller='mainApp' ng-show='state.app'>
         <div class='row'>
-            <div class='col-lg-4 col-xs-4 col-sm-4' ng-repeat='user in users'>
-                <div class='alert alert-dismissable'>
-                    {{user.username}} - {{user.repoCount}}
+            <div class='col-lg-6 col-xs-6 col-sm-6' ng-repeat='user in users'>
+                <div class='well infobox'>
+                    <h3><img ng-src='{{user.avatar}}' class='circle avatar'> {{user.username}}</h3>
+                    <hr>
+                    Number of Repos: {{user.repoCount}}<br>
+                    Favorite Language: {{user.topLanguage}}<br>
+                    Most Watched Project: {{user.mostWatchedProject.project}}<br />
+                    Watchers: {{user.mostWatchedProject.count}}<br />
+                    <a class='btn btn-info btn-xs btn-raised' href='http://github.com/{{user.username}}'>View Github</a>
                 </div>
             </div>
         </div>
