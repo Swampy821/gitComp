@@ -1,0 +1,17 @@
+{
+  "name": "gitCompete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.8.9",
+    "gulp-concat":"*",
+    "gulp-less":"*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Steve",
+  "license": "ISC"
+}
