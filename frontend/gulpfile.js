@@ -8,6 +8,9 @@ gulp.task('js', function() {
   gulp.src(
   	['./dev/js/app.js', 
   	 './dev/js/Controllers/home.js', 
+     './dev/js/Controllers/nav.js',
+     './dev/js/Controllers/mainApp.js',
+     './dev/js/Controllers/windowShows.js',
   	 './dev/material/js/material.min.js', 
   	 './dev/material/js/ripples.min.js'])
     .pipe(concat('bundle.js'))

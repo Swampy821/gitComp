@@ -7,10 +7,9 @@
 </head>
 
 <body>
-
-<div  ng-controller='home'>
+<div ng-controller='windowShows'>
     <!-- Your site -->
-    <div class="navbar navbar-inverse">
+    <div class="navbar navbar-inverse" ng-controller='nav'>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                 <span class="icon-bar"></span>
@@ -22,16 +21,20 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             
             <form class="navbar-form navbar-left" ng-submit='add()'>
-                <input type="text" class="form-control col-lg-8 " placeholder="Github Username" ng-model='addUser'>
+                <input type="text" class="form-control col-lg-8 " placeholder="Github Username" ng-model='addUser'   ng-show='state.start'>
             </form>
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav"  ng-show='state.start'>
                 <li><a href="javascript:void(0)" ng-click='add()'>Add Username</a></li>
             </ul>
+            <ul class="nav navbar-nav"  ng-show='state.app'>
+                <li><a href="javascript:void(0)" ng-click='back()'>Back</a></li>
+            </ul>
+
             
         </div>
     </div>
 <div class='container'>
-    <div class='row'>
+    <div class='row' ng-controller='home' ng-show='state.start'>
         <div class='col-lg-8 col-xs-8 col-sm-8'>
             <div class="alert alert-dismissable">
                 <h1>Your User List</h1>
@@ -48,11 +51,29 @@
         </div>
         <div class='col-lg-4 col-xs-4 col-sm-4 start-box'>
             <div class='alert alert-dismissable'>
-                <a class='btn btn-success'>Start</a>
+                <a class='btn btn-success' ng-click='start()'>Start</a>
             </div>
         </div>
     </div>
+
+
+    <div class='row' ng-controller='mainApp' ng-show='state.app'>
+        <div class='col-lg-4 col-xs-4 col-sm-4'>
+            <div class='alert alert-dismissable'>
+                <ul>
+                    <li ng-repeat='user in users'>
+                        {{user.username}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
+
+
 </div>
     <!-- Your site ends -->
 
